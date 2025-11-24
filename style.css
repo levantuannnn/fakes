@@ -1,0 +1,30 @@
+.product-card {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px; 
+}
+
+.product-title {
+    color: blue;
+    font-weight: bold;
+}
+@media (min-width:576px) {
+    .product-image {
+   height: 120px;
+   width: 100px;
+    display: block;
+     margin-left: auto;
+     margin-right: auto;
+}
+}
+
+@media (max-width: 476px) {
+   .product-image {
+   height: 120px;
+   width: 100px;
+   display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+}
