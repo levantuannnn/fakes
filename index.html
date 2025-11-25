@@ -9,12 +9,29 @@
     
 </head>
 <body> 
-    <body> 
-        <div class="container">
- 
-             <div class="row justify-content-center" id="Conchild"></div> 
+   
+        <div class="container"> 
+              <div class="input_child">
+                   <input type="text" id="input_child_text" placeholder="Input text"> 
+                    <button class="search">search</button>
+              </div>
+             <div class="sort">
+                <button class="sort_child">sort_desc</button> 
+             <button class="sort_asc">sort_asc</button>
+             </div>
+             <div id="loading" class="text-center" style="display:none;">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+
+             <div class="row justify-content-center" id="Conchild"></div>   
        </div>
+       <div class="pike"> 
+              <button class="close">Colose X</button>
+              <div class="dasboa"></div>
+       </div> 
     <script src="scrip.js" ></script>
-</body>
+ 
 </body>
 </html>

@@ -4,7 +4,89 @@
     margin: 10px 0;
     border-radius: 5px; 
 }
+.search{
+     margin-top: 5px;
+     margin-left: 20px;
+     width: 60px;
+     height: 30px;
+}
+body{
+     background-color: aqua;
+}
+#loading {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+}
 
+.close{
+     position: absolute;
+     top:3%;
+     right: 3%;
+     background-color: red;
+}
+.pike{
+     width: 700px;
+     height: 500px;
+     position: fixed;
+     top:20%;
+     left: 30%;
+     background-color: whitesmoke;
+    
+}
+@media (max-width:460px) {
+    .close{
+     position: absolute;
+     top:3%;
+     right: 30%;
+     background-color: red;
+}
+.pike{
+     width: 300px;
+     height: 400px;
+     position: fixed;
+     top:20%;
+     left: 30%;
+     background-color: whitesmoke;
+}
+}
+.input_child {
+    margin-bottom: 20px;
+    width: 400px;
+    height: 50px;
+    text-align: center;
+    margin: auto;
+    display: flex;
+}
+.sort_button {
+    margin-left: 30px;
+    width: 100px;
+    height: 50px;
+}
+.modal{
+     position: fixed;
+     z-index: 1000;
+     top:50%;
+     left: 50%;
+     width: 700px;
+     height: 700px;
+     background-color: rgb(255, 0, 0);
+}   
+.modal_button{
+     position: absolute;
+     width: 70px;
+     height: 50px;
+        top:10px;
+        right:10px;
+}
+.input_child input {
+    width: 70%;
+    height: 70%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 .product-title {
     color: blue;
     font-weight: bold;

@@ -4,7 +4,7 @@
 let Conchild = document.querySelector('#Conchild');
 console.log(Conchild);
 let arr=[];
-
+let pike=document.querySelector('.pike');
 //ham appendChild luu  cac phan tu vao the cha moi khi duoc goi vao  boi ham renderEge
 
 function appendChild(element){
@@ -17,7 +17,7 @@ function appendChild(element){
            //the loai
            let button=document.createElement('button');
            button.classList.add('btn','btn-primary','mb-2','d-block','showtoggle');
-           button.innerText="Show";
+           button.innerText="xem chi tiet";
            button.classList.add('d-block','mx-auto');
            //the loai san pham
            let catogory=document.createElement('h8');
@@ -51,8 +51,19 @@ function appendChild(element){
             divEge.appendChild(price);
             divEge.appendChild(button);
             button.addEventListener('click',()=>{
-                destip.classList.toggle('d-none');
-            })
+               
+                arr.forEach(ele=>{
+                    if(ele.id===element.id){
+                        document.querySelector('.pike .dasboa').innerHTML=
+                        `<img src=${ele.image} style="width:200px;height:200px;"></img>`
+                        + `<h6>${ele.title}</h6>`
+                        + `<p>Category: ${ele.category}</p>`
+                        + `<p>Price: $${ele.price}</p>`
+                        + `<p>Description: ${ele.description}</p>`
+                        + `<p>Rating: ${ele.rating.rate} (${ele.rating.count} reviews)</p>`;
+                        pike.classList.remove('d-none');
+                    }
+            })});
             divEge.appendChild(catogory);
             divEge.appendChild(destip); 
             divEge.appendChild(rate);
@@ -73,6 +84,7 @@ function renderEge(){
 //ham showEge de goi api cung nhu luu du lieu vao mang arr
 async function showFire() {
     try {
+    
         const res = await fetch("https://fakestoreapi.com/products");
         const json = await res.json();
         arr = json;
@@ -83,3 +95,73 @@ async function showFire() {
 }
 
 showFire();
+// xu ly input text khi  user nhap vao 
+
+let input_child_text=document.querySelector('#input_child_text');
+input_child_text.addEventListener('keydown',(e)=>{
+    if(e.key==='Enter'){
+         let value=e.target.value.toLowerCase();
+         Conchild.innerHTML='';
+        let  update  = arr.filter(element=>{
+             return element.title.toLowerCase().includes(value) || element.category.toLowerCase().includes(value);
+         })
+         if( update.length===0){
+             alert('Khong tim thay san pham');
+             renderEge();
+             
+         }
+         update.forEach(element=>{
+             appendChild(element);
+         })
+    }
+} 
+)
+
+//xu ly nut button xap xep giam dan 
+//sort_desc la mang da duoc xap xep giam dan
+let button_sort_desc=document.querySelector('.sort_child');
+button_sort_desc.addEventListener('click',()=>{
+    console.log('click');
+    Conchild.innerHTML='';
+     let  Sort_desc  = arr.sort((a,b)=>{
+         return b.price - a.price;
+     })
+     Sort_desc.forEach(element=>{
+         appendChild(element);
+     })
+});
+//xu ly nut button xap xep tang dan
+//sort_asc la mang da duoc xap xep tang dan
+let button_sort_asc=document.querySelector('.sort_asc');
+button_sort_asc.addEventListener('click',()=>{
+    console.log('click');
+    Conchild.innerHTML='';
+        let  Sort_asc  = arr.sort((a,b)=>{
+             return a.price - b.price;
+        });
+        Sort_asc.forEach(element=>{
+             appendChild(element);
+        });
+});
+///kiem  tra xem thu neu da co thuoc tinh d-none roi thi xoa di neu chua co thi them vao dong hop thoai
+  
+let close=document.querySelector('.pike .close');
+close.addEventListener('click',()=>{ 
+    pike.classList.toggle('d-none');
+})
+//search tim kiem 
+let search=document.querySelector('.search');
+search.addEventListener('click',()=>{
+    let input_child_text=document.querySelector('#input_child_text').value.toLowerCase();
+    Conchild.innerHTML='';
+    let  update  = arr.filter(element=>{
+         return element.title.toLowerCase().includes(input_child_text) || element.category.toLowerCase().includes(input_child_text);
+     })
+     if( update.length===0){
+         alert('Khong tim thay san pham');
+         renderEge();  
+     }
+     update.forEach(element=>{
+         appendChild(element);
+     });
+});
