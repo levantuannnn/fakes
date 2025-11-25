@@ -91,6 +91,7 @@ async function showFire() {
         renderEge();
     } catch (err) {
         console.log(err);
+        alert('Co loi xay ra khi fetch API');
     }
 }
 
