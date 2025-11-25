@@ -39,11 +39,11 @@ function appendChild(element){
             title.classList.add('text-center','d-block','mb-2');
             //danh gia san pham
             let rate=document.createElement('span');
-            rate.innerText=element.rating.rate;
+            rate.innerText='rate'+' '+element.rating.rate;
             rate.classList.add('mr-2');
             //so luong danh gia san pham 
             let count=document.createElement('span');
-            count.innerText=element.rating.count;
+            count.innerText='count:'+' '+element.rating.count;
             count.classList.add('text-center','d-block','mt-2');
             
             divEge.appendChild(image);
